@@ -5,8 +5,9 @@ const sentenceElement = document.getElementById("sentence");
 const soupNameElement = document.getElementById("soupName");
 const ingredient1Element = document.getElementById("ingredient1");
 const ingredient2Element = document.getElementById("ingredient2");
+const soupEmojiElement = document.getElementById("soupEmoji"); // New line
 
-document.body.addEventListener("click", generateRandomSentence);
+soupEmojiElement.addEventListener("click", generateRandomSentence); // New line
 
 function generateRandomSentence() {
     const randomSoup = getRandomElement(soupNames);
@@ -16,12 +17,6 @@ function generateRandomSentence() {
     soupNameElement.textContent = randomSoup;
     ingredient1Element.textContent = randomIngredient1;
     ingredient2Element.textContent = randomIngredient2;
-
-    // Animate words floating out of the bowl
-    sentenceElement.classList.add("animate");
-    setTimeout(() => {
-        sentenceElement.classList.remove("animate");
-    }, 1000);
 }
 
 function getRandomElement(array) {

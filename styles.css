@@ -34,3 +34,8 @@ body {
 #and {
     color: #27420F;
 }
+
+#soupEmoji {
+    font-size: 30px;
+    cursor: pointer;
+}
