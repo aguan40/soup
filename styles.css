@@ -5,8 +5,8 @@
 }
 
 @font-face {
-    font-family: 'Candy Beans';
-    src: url('./Candy Beans.otf') format('opentype');
+    font-family: 'Candy_Beans';
+    src: url('./Candy_Beans.otf') format('opentype');
 }
 
 #headerText {
@@ -14,7 +14,7 @@
     color: #570D02;
     font-size: 24px; /* Adjust the font size */
     margin-top: 10px; /* Adjust the margin-top for spacing */
-    margin-bottom: 30px
+    margin-bottom: 30px;
 }
 
 body {
