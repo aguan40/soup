@@ -5,9 +5,9 @@ const sentenceElement = document.getElementById("sentence");
 const soupNameElement = document.getElementById("soupName");
 const ingredient1Element = document.getElementById("ingredient1");
 const ingredient2Element = document.getElementById("ingredient2");
-const soupEmojiElement = document.getElementById("soupEmoji"); // New line
+const soupEmojiElement = document.getElementById("soupEmoji");
 
-soupEmojiElement.addEventListener("click", generateRandomSentence); // New line
+soupEmojiElement.addEventListener("click", generateRandomSentence);
 
 function generateRandomSentence() {
     const randomSoup = getRandomElement(soupNames);
