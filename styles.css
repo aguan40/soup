@@ -9,9 +9,10 @@ body {
     background-color: #F4E3D3;
     margin: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .container {
@@ -36,7 +37,8 @@ body {
 }
 
 #soupEmoji {
-    width: 200px; /* Adjust the width */
-    height: auto; /* Maintain aspect ratio */
+    width: auto; /* Adjust the width */
+    height: 200px; /* Maintain aspect ratio */
     cursor: pointer;
+    margin-top: 20px; /* Adjust the margin-top for spacing */
 }
