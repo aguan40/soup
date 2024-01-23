@@ -4,6 +4,18 @@
     /* Add additional formats if necessary */
 }
 
+@font-face {
+    font-family: 'Candy Beans';
+    src: url('./Candy Beans.otf') format('otf');
+}
+
+#headerText {
+    font-family: 'Candy Beans', sans-serif;
+    color: #570D02;
+    font-size: 24px; /* Adjust the font size */
+    margin-top: 20px; /* Adjust the margin-top for spacing */
+}
+
 body {
     font-family: 'ADELIA', sans-serif;
     background-color: #F4E3D3;
@@ -37,8 +49,8 @@ body {
 }
 
 #soupEmoji {
-    width: auto; /* Adjust the width */
-    height: 200px; /* Maintain aspect ratio */
+    width: 200 px; /* Adjust the width */
+    height: auto; /* Maintain aspect ratio */
     cursor: pointer;
     margin-top: 20px; /* Adjust the margin-top for spacing */
 }
