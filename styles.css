@@ -1,19 +1,20 @@
 @font-face {
     font-family: 'ADELIA';
-    src: url('./ADELIA.otf') format('otf');
+    src: url('./ADELIA.otf') format('opentype');
     /* Add additional formats if necessary */
 }
 
 @font-face {
     font-family: 'Candy Beans';
-    src: url('./Candy Beans.otf') format('otf');
+    src: url('./Candy Beans.otf') format('opentype');
 }
 
 #headerText {
     font-family: 'Candy Beans', sans-serif;
     color: #570D02;
     font-size: 24px; /* Adjust the font size */
-    margin-top: 20px; /* Adjust the margin-top for spacing */
+    margin-top: 10px; /* Adjust the margin-top for spacing */
+    margin-bottom: 30px
 }
 
 body {
