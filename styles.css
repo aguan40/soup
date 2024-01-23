@@ -1,24 +1,11 @@
 @font-face {
     font-family: 'ADELIA';
-    src: url('ADELIA.otf') format('otf'),
+    src: url('./ADELIA.otf') format('otf');
     /* Add additional formats if necessary */
 }
 
 body {
     font-family: 'ADELIA', sans-serif;
-}
-
-#sentence,
-#soupName,
-#ingredient1,
-#ingredient2,
-#try,
-#with,
-#and {
-    font-family: 'ADELIA', sans-serif;
-}
-
-body {
     background-color: #F4E3D3;
     margin: 0;
     display: flex;
@@ -47,4 +34,3 @@ body {
 #and {
     color: #27420F;
 }
-
