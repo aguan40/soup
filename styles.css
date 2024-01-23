@@ -12,9 +12,9 @@
 #headerText {
     font-family: 'Candy_Beans', sans-serif;
     color: #570D02;
-    font-size: 24px; /* Adjust the font size */
+    font-size: 60px; /* Adjust the font size */
     margin-top: 10px; /* Adjust the margin-top for spacing */
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 body {
@@ -35,7 +35,7 @@ body {
 #sentence {
     font-size: 20px;
     color: #27420F;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 #soupName,
