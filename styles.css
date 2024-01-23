@@ -1,0 +1,29 @@
+body {
+    background-color: #F4E3D3;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+#sentence {
+    font-size: 20px;
+    color: #27420F;
+}
+
+#soupName,
+#ingredient1,
+#ingredient2 {
+    color: #FE6B00;
+}
+
+#try,
+#with,
+#and {
+    color: #27420F;
+}
