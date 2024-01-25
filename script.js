@@ -4,7 +4,7 @@ const sentenceElement = document.getElementById("sentence");
 sentenceElement.innerHTML = "Try <span id='soupName'>[A Soup]</span> with <span id='ingredient1'>[Ingredient 1]</span> and <span id='ingredient2'>[Ingredient 2]</span>.";
 
 function generateRandomSentence() {
-    const randomSoup = getRandomElement(soupNames);
+    const randomSoup = getRandomElement(soups);
     const randomIngredient1 = getRandomElement(ingredients);
     const randomIngredient2 = getRandomElement(ingredients);
 
@@ -35,5 +35,9 @@ function getRandomElement(array) {
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex];
 }
+
+// Define data for soups and ingredients
+const soups = ["Tom Yum", "Minestrone", "Pho", "Gazpacho", "Lentil Soup"];
+const ingredients = ["ginger", "basil", "cabbage", "lemongrass", "garlic"];
 
 document.getElementById("soupEmoji").addEventListener("click", generateRandomSentence);
