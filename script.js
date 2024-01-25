@@ -12,7 +12,7 @@ function generateRandomSentence() {
     // Hide static words when the soup bowl is clicked
     hideStaticWords();
 
-    sentenceElement.innerHTML = `<span class="word" id="try">try</span> <span id="soupName">${randomSoup}</span> <span class="word" id="with">with</span> <span id="ingredient1">${randomIngredient1}</span> <span class="word" id="and">and</span> <span id="ingredient2">${randomIngredient2}</span>.`;
+    sentenceElement.innerHTML = `<span class="word" id="try">try</span> <span id='soupName'>${randomSoup}</span> <span class="word" id="with">with</span> <span id='ingredient1'>${randomIngredient1}</span> <span class="word" id="and">and</span> <span id='ingredient2'>${randomIngredient2}</span>`;
 
     // Set random position and rotation for each word
     setPositionAndRotation("try");
@@ -21,7 +21,9 @@ function generateRandomSentence() {
     setPositionAndRotation("ingredient1");
     setPositionAndRotation("and");
     setPositionAndRotation("ingredient2");
-    setPositionAndRotation("period"); // Add period to set position and rotation
+
+    // Set random position and rotation for period
+    setPositionAndRotation("period");
 
     // Set random position for soup bowl
     setPositionAndRotation("soupEmoji");
