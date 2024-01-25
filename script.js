@@ -2,7 +2,7 @@ const sentenceElement = document.getElementById("sentence");
 const margin = 100; // Adjust the margin as needed
 
 // Set initial placeholder content
-sentenceElement.innerHTML = "Try <span id='soupName'>[A Soup]</span> with <span id='ingredient1'>[Ingredient 1]</span> and <span id='ingredient2'>[Ingredient 2]</span>.";
+sentenceElement.innerHTML = "Try <span id='soupName'>[A Soup]</span> with <span id='ingredient1'>[Ingredient One]</span> and <span id='ingredient2'>[Ingredient Two]</span>.";
 
 function generateRandomSentence() {
     const randomSoup = getRandomElement(soups);
