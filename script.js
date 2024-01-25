@@ -1,5 +1,8 @@
 const sentenceElement = document.getElementById("sentence");
 
+// Set initial placeholder content
+sentenceElement.innerHTML = "Try <span id='soupName'>[A Soup]</span> with <span id='ingredient1'>[Ingredient 1]</span> and <span id='ingredient2'>[Ingredient 2]</span>.";
+
 function generateRandomSentence() {
     const randomSoup = getRandomElement(soupNames);
     const randomIngredient1 = getRandomElement(ingredients);
