@@ -1,14 +1,17 @@
 const sentenceElement = document.getElementById("sentence");
 
 // Set initial placeholder content
-sentenceElement.innerHTML = "Try <span id='soupName'>[A Soup]</span> with <span id='ingredient1'>[Ingredient 1]</span> and <span id='ingredient2'>[Ingredient 2]</span>.";
+sentenceElement.innerHTML = "Try <span id='soupName'>[A Soup]</span> with <span id='ingredient1'>[Ingredient One]</span> and <span id='ingredient2'>[Ingredient Two]</span>.";
 
 function generateRandomSentence() {
     const randomSoup = getRandomElement(soups);
     const randomIngredient1 = getRandomElement(ingredients);
     const randomIngredient2 = getRandomElement(ingredients);
 
-    sentenceElement.innerHTML = `Try <span class="word" id="try">try</span> <span id="soupName">${randomSoup}</span> with <span class="word" id="with">with</span> <span id="ingredient1">${randomIngredient1}</span> and <span class="word" id="and">and</span> <span id="ingredient2">${randomIngredient2}</span>.`;
+    // Hide static words when the soup bowl is clicked
+    hideStaticWords();
+
+    sentenceElement.innerHTML = `<span class="word" id="try">try</span> <span id="soupName">${randomSoup}</span> <span class="word" id="with">with</span> <span id="ingredient1">${randomIngredient1}</span> <span class="word" id="and">and</span> <span id="ingredient2">${randomIngredient2}</span>.`;
 
     // Set random position and rotation for each word
     setPositionAndRotation("try");
@@ -17,6 +20,16 @@ function generateRandomSentence() {
     setPositionAndRotation("ingredient1");
     setPositionAndRotation("and");
     setPositionAndRotation("ingredient2");
+}
+
+function hideStaticWords() {
+    const staticWords = ["try", "with", "and"];
+    staticWords.forEach(word => {
+        const element = document.getElementById(word);
+        if (element) {
+            element.style.display = "none";
+        }
+    });
 }
 
 function setPositionAndRotation(elementId) {
