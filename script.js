@@ -1,7 +1,8 @@
 const sentenceElement = document.getElementById("sentence");
+const margin = 20; // Adjust the margin as needed
 
 // Set initial placeholder content
-sentenceElement.innerHTML = "Try <span id='soupName'>[A Soup]</span> with <span id='ingredient1'>[Ingredient One]</span> and <span id='ingredient2'>[Ingredient Two]</span>.";
+sentenceElement.innerHTML = "Try <span id='soupName'>[A Soup]</span> with <span id='ingredient1'>[Ingredient 1]</span> and <span id='ingredient2'>[Ingredient 2]</span>.";
 
 function generateRandomSentence() {
     const randomSoup = getRandomElement(soups);
@@ -20,10 +21,14 @@ function generateRandomSentence() {
     setPositionAndRotation("ingredient1");
     setPositionAndRotation("and");
     setPositionAndRotation("ingredient2");
+    setPositionAndRotation("period"); // Add period to set position and rotation
+
+    // Set random position for soup bowl
+    setPositionAndRotation("soupEmoji");
 }
 
 function hideStaticWords() {
-    const staticWords = ["try", "with", "and"];
+    const staticWords = ["try", "with", "and", "period"];
     staticWords.forEach(word => {
         const element = document.getElementById(word);
         if (element) {
@@ -34,8 +39,8 @@ function hideStaticWords() {
 
 function setPositionAndRotation(elementId) {
     const element = document.getElementById(elementId);
-    const randomX = Math.random() * (window.innerWidth - element.clientWidth);
-    const randomY = Math.random() * (window.innerHeight - element.clientHeight);
+    const randomX = Math.random() * (window.innerWidth - element.clientWidth - margin * 2) + margin;
+    const randomY = Math.random() * (window.innerHeight - element.clientHeight - margin * 2) + margin;
     const randomRotation = Math.random() * 360; // in degrees
 
     element.style.position = "absolute";
