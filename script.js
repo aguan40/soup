@@ -1,5 +1,5 @@
 const sentenceElement = document.getElementById("sentence");
-const margin = 20; // Adjust the margin as needed
+const margin = 100; // Adjust the margin as needed
 
 // Set initial placeholder content
 sentenceElement.innerHTML = "Try <span id='soupName'>[A Soup]</span> with <span id='ingredient1'>[Ingredient 1]</span> and <span id='ingredient2'>[Ingredient 2]</span>.";
@@ -12,7 +12,7 @@ function generateRandomSentence() {
     // Hide static words when the soup bowl is clicked
     hideStaticWords();
 
-    sentenceElement.innerHTML = `<span class="word" id="try">try</span> <span id='soupName'>${randomSoup}</span> <span class="word" id="with">with</span> <span id='ingredient1'>${randomIngredient1}</span> <span class="word" id="and">and</span> <span id='ingredient2'>${randomIngredient2}</span>`;
+    sentenceElement.innerHTML = `<span class="word" id="try">try</span> <span id='soupName'>${randomSoup}</span> <span class="word" id="with">with</span> <span id='ingredient1'>${randomIngredient1}</span> <span class="word" id="and">and</span> <span id='ingredient2'>${randomIngredient2}</span> <span class="word" id="period">.</span>`;
 
     // Set random position and rotation for each word
     setPositionAndRotation("try");
@@ -21,12 +21,10 @@ function generateRandomSentence() {
     setPositionAndRotation("ingredient1");
     setPositionAndRotation("and");
     setPositionAndRotation("ingredient2");
-
-    // Set random position and rotation for period
     setPositionAndRotation("period");
 
     // Set random position for soup bowl
-    setPositionAndRotation("soupEmoji");
+    setPositionAndRotation("soupEmoji", false); // false to keep rotation
 }
 
 function hideStaticWords() {
@@ -39,16 +37,24 @@ function hideStaticWords() {
     });
 }
 
-function setPositionAndRotation(elementId) {
+function setPositionAndRotation(elementId, changeRotation = true) {
     const element = document.getElementById(elementId);
     const randomX = Math.random() * (window.innerWidth - element.clientWidth - margin * 2) + margin;
     const randomY = Math.random() * (window.innerHeight - element.clientHeight - margin * 2) + margin;
-    const randomRotation = Math.random() * 360; // in degrees
+
+    // Keep the current rotation if specified
+    const currentRotation = changeRotation ? Math.random() * 360 : getRotation(element);
 
     element.style.position = "absolute";
     element.style.left = `${randomX}px`;
     element.style.top = `${randomY}px`;
-    element.style.transform = `rotate(${randomRotation}deg)`;
+    element.style.transform = `rotate(${currentRotation}deg)`;
+}
+
+function getRotation(element) {
+    const style = window.getComputedStyle(element);
+    const matrix = new DOMMatrix(style.transform);
+    return Math.round(Math.atan2(matrix.b, matrix.a) * (180 / Math.PI));
 }
 
 function getRandomElement(array) {
