@@ -14,7 +14,7 @@
     color: #570D02;
     font-size: 60px; /* Adjust the font size */
     margin-top: 10px; /* Adjust the margin-top for spacing */
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 body {
@@ -35,7 +35,7 @@ body {
 #sentence {
     font-size: 20px;
     color: #27420F;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 #soupName,
