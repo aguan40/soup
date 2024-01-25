@@ -5,51 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Random Soup Generator</title>
-    <style>
-        /* Add any additional styles here */
-        .circle-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            position: absolute;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <div id="headerText">Random Soup Generator</div>
         <div id="sentence">Try <span id="soupName"></span> with <span id="ingredient1"></span> and <span id="ingredient2"></span>.</div>
-        <div id="soupEmoji" onclick="handleMouseClick()">
+        <div id="soupEmoji" onclick="generateRandomSentence">
             <img src="soup-image.png" alt="Soup Image" width="200" height="auto">
         </div>
     </div>
     <script src="script.js"></script>
-    <script>
-        function hndlr(response) {
-            for (var i = 0; i < response.items.length; i++) {
-                var item = response.items[i];
-                var image = document.createElement("img");
-                image.src = item.link;
-                image.className = "circle-image";
-                image.style.left = Math.random() * window.innerWidth + "px";
-                image.style.top = Math.random() * window.innerHeight + "px";
-                document.body.appendChild(image);
-            }
-        }
-
-        function handleMouseClick() {
-            var apiKey = 'AIzaSyC8TlREcyMorwRonBMho7vBlgpmq_nPvRs';
-            var cx = '0219352ea8cb144a8';
-            var query = 'soupName ' + 'ingredient1';
-            var script = document.createElement("script");
-            script.src = "https://www.googleapis.com/customsearch/v1?key=" + apiKey +
-                          "&cx=" + cx +
-                          "&q=" + query +
-                          "&searchType=image&callback=hndlr";
-            document.body.appendChild(script);
-        }
-
-        document.body.addEventListener("click", handleMouseClick);
+    <!-- <script async src="https://cse.google.com/cse.js?cx=0219352ea8cb144a8">
     </script>
+    <div class="gcse-search"></div> -->
 </body>
 </html>
