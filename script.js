@@ -1,63 +1,36 @@
-const sentenceElement = document.getElementById("sentence");
-const soupEmojiElement = document.getElementById("soupEmoji");
-
-soupEmojiElement.addEventListener("click", generateRandomSentence);
+const soupNames = ["Tom Yum", "Minestrone", "Pho", "Gazpacho", "Lentil Soup"];
+const ingredients = ["ginger", "basil", "cabbage", "lemongrass", "garlic"];
 
 function generateRandomSentence() {
     const randomSoup = getRandomElement(soupNames);
     const randomIngredient1 = getRandomElement(ingredients);
     const randomIngredient2 = getRandomElement(ingredients);
 
-    // Create a container div for the dynamic sentence
-    const sentenceContainer = document.createElement("div");
-    sentenceContainer.style.position = "absolute";
-    sentenceContainer.style.color = "#27420F"; // Adjust color if needed
+    const sentenceElement = document.getElementById("sentence");
+    
+    sentenceElement.innerHTML = `Try <span id="soupName">${randomSoup}</span> with <span id="ingredient1">${randomIngredient1}</span> and <span id="ingredient2">${randomIngredient2}</span>.`;
 
-    // Create elements for each part of the sentence
-    const tryElement = createRandomElement("Try");
-    const soupElement = createRandomElement(randomSoup);
-    const withElement = createRandomElement("with");
-    const ingredient1Element = createRandomElement(randomIngredient1);
-    const andElement = createRandomElement("and");
-    const ingredient2Element = createRandomElement(randomIngredient2);
+    // Get the window boundaries
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
 
-    // Append elements to the container
-    sentenceContainer.appendChild(tryElement);
-    sentenceContainer.appendChild(soupElement);
-    sentenceContainer.appendChild(withElement);
-    sentenceContainer.appendChild(ingredient1Element);
-    sentenceContainer.appendChild(andElement);
-    sentenceContainer.appendChild(ingredient2Element);
-
-    // Append the container to the body
-    document.body.appendChild(sentenceContainer);
-
-    // Position and rotate the container randomly on the screen
-    positionAndRotateRandomly(sentenceContainer);
+    // Set random position and rotation for each word
+    setPositionAndRotation("soupName");
+    setPositionAndRotation("ingredient1");
+    setPositionAndRotation("ingredient2");
 }
 
-function createRandomElement(text) {
-    const element = document.createElement("span");
-    element.textContent = text;
-    return element;
+function setPositionAndRotation(elementId) {
+    const element = document.getElementById(elementId);
+    const randomX = Math.random() * window.innerWidth;
+    const randomY = Math.random() * window.innerHeight;
+    const randomRotation = Math.random() * 360; // in degrees
+
+    element.style.position = "absolute";
+    element.style.left = `${randomX}px`;
+    element.style.top = `${randomY}px`;
+    element.style.transform = `rotate(${randomRotation}deg)`;
 }
-
-function positionAndRotateRandomly(element) {
-    const containerWidth = element.offsetWidth;
-    const containerHeight = element.offsetHeight;
-
-    const maxX = window.innerWidth - containerWidth;
-    const maxY = window.innerHeight - containerHeight;
-
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
-    const rotation = Math.random() * 360; // Random rotation in degrees
-
-    element.style.left = x + "px";
-    element.style.top = y + "px";
-    element.style.transform = `rotate(${rotation}deg)`;
-}
-
 
 function getRandomElement(array) {
     const randomIndex = Math.floor(Math.random() * array.length);
