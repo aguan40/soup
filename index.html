@@ -10,6 +10,12 @@
     <div class="container">
         <div id="headerText">Random Soup Generator</div>
         <div id="sentence">Try <span id="soupName"></span> with <span id="ingredient1"></span> and <span id="ingredient2"></span>.</div>
+        <div id="soupImages">
+            <!-- Image elements for each ingredient and soup -->
+            <img id="soupImage" class="hidden" src="" alt="Soup Image" width="200" height="auto">
+            <img id="ingredientImage1" class="hidden" src="" alt="Ingredient 1" width="200" height="auto">
+            <img id="ingredientImage2" class="hidden" src="" alt="Ingredient 2" width="200" height="auto">
+        </div>
         <div id="soupEmoji" onclick="generateRandomSentence()">
             <img src="soup-image.png" alt="Soup Image" width="200" height="auto">
         </div>

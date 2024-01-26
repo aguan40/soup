@@ -64,3 +64,19 @@ body {
 .hidden {
     display: none;
 }
+
+#soupImages {
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+#ingredientImage1,
+#ingredientImage2,
+#ingredientImage3 {
+    position: absolute;
+    width: 100px; /* Adjust the width */
+    height: auto; /* Maintain aspect ratio */
+}

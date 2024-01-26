@@ -61,6 +61,21 @@ function generateRandomSentence() {
     const randomIngredient1 = getRandomElement(ingredients);
     const randomIngredient2 = getRandomElement(ingredients);
 
+    // Display corresponding images
+    displayIngredientImage("ingredientImage1", randomIngredient1);
+    displayIngredientImage("ingredientImage2", randomIngredient2);
+
+    // Display soup image
+    const soupImageElement = document.getElementById("soupImage");
+    if (soupImageElement) {
+        const soupImagePath = `images/${randomSoup.toLowerCase()}.png`;
+        soupImageElement.src = soupImagePath;
+        soupImageElement.classList.remove("hidden");
+
+        // Set random position for the soup image
+        setPositionAndRotation("soupEmoji", false); // false to keep rotation
+    }
+
     // Hide static words
     hideStaticWords();
 
@@ -81,6 +96,20 @@ function generateRandomSentence() {
     // Reset sentence after 1 second
     setTimeout(resetSentence, 1000);
 }
+
+function displayIngredientImage(imageId, ingredient) {
+    const imageElement = document.getElementById(imageId);
+    if (imageElement) {
+        // Use a relative path for the image
+        const imagePath = `images/${ingredient.toLowerCase()}.png`;
+        imageElement.src = imagePath;
+        imageElement.classList.remove("hidden");
+
+        // Set random position for the ingredient image
+        setPositionAndRotation(imageId, false); // false to keep rotation
+    }
+}
+
 let transitionDuration = 2;
 
 function resetSentence() {
@@ -139,16 +168,30 @@ function resetSentence() {
 
 function setPositionAndRotation(elementId, changeRotation = true) {
     const element = document.getElementById(elementId);
-    const randomX = Math.random() * (window.innerWidth - element.clientWidth - margin * 2) + margin;
-    const randomY = Math.random() * (window.innerHeight - element.clientHeight - margin * 2) + margin;
+    if (element) {
+        const margin = 20; // Adjust margin as needed
 
-    // Keep the current rotation if specified
-    const currentRotation = changeRotation ? Math.random() * 360 : getRotation(element);
+        // Get the dimensions of the viewport
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
 
-    element.style.position = "absolute";
-    element.style.left = `${randomX}px`;
-    element.style.top = `${randomY}px`;
-    element.style.transform = `rotate(${currentRotation}deg)`;
+        // Calculate the maximum allowed positions
+        const maxX = viewportWidth - element.clientWidth - margin;
+        const maxY = viewportHeight - element.clientHeight - margin;
+
+        // Calculate random positions within the limits
+        const randomX = Math.max(Math.min(Math.random() * maxX, maxX), margin);
+        const randomY = Math.max(Math.min(Math.random() * maxY, maxY), margin);
+
+        // Keep the current rotation if specified
+        const currentRotation = changeRotation ? Math.random() * 360 : getRotation(element);
+
+        // Set position and rotation
+        element.style.position = "fixed"; // Use fixed positioning
+        element.style.left = `${randomX}px`;
+        element.style.top = `${randomY}px`;
+        element.style.transform = `rotate(${currentRotation}deg)`;
+    }
 }
 
 function getRotation(element) {
