@@ -56,3 +56,11 @@ body {
     cursor: pointer;
     margin-top: 20px; /* Adjust the margin-top for spacing */
 }
+
+#soupImages {
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}

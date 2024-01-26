@@ -5,16 +5,23 @@ let initialPositions = {};  // Declare initialPositions globally
 const soups = ["Tom Yum", "Minestrone", "Pho", "Gazpacho", "Lentil Soup"];
 const ingredients = ["ginger", "basil", "cabbage", "lemongrass", "garlic"];
 
-// ... (rest of your code remains unchanged)
 
 function saveInitialPositions() {
+    const sentenceElement = document.getElementById("sentence");
+    if (sentenceElement) {
+        initialSentencePosition = {
+            left: window.getComputedStyle(sentenceElement).left,
+            top: window.getComputedStyle(sentenceElement).top,
+        };
+    }
+
     const words = ["try", "soupName", "with", "ingredient1", "and", "ingredient2", "period", "soupEmoji"];
     words.forEach(word => {
         const element = document.getElementById(word);
         if (element) {
             initialPositions[word] = {
-                left: element.style.left,
-                top: element.style.top,
+                left: window.getComputedStyle(element).left,
+                top: window.getComputedStyle(element).top,
             };
         }
     });
@@ -94,15 +101,25 @@ function resetSentence() {
     let currentLeft = initialSentencePosition.left ? parseFloat(initialSentencePosition.left) : margin;
     const initialTop = initialSentencePosition.top ? parseFloat(initialSentencePosition.top) : margin;
 
+    // Group the words "try," "with," and "and" together
+    const groupedWords = ["try", "with", "and"];
+
     words.forEach(word => {
         const element = document.getElementById(word);
         if (element && initialPositions[word]) {
             // Use CSS transition for smooth movement
             element.style.transition = `left ${transitionDuration}s, top ${transitionDuration}s, transform ${transitionDuration}s`;
 
-            element.style.left = `${currentLeft}px`;
-            element.style.top = `${initialTop}px`;
-            element.style.transform = `rotate(0deg)`;
+            // Check if the word is part of the grouped words
+            if (groupedWords.includes(word)) {
+                // Set position for grouped words
+                element.style.left = `${currentLeft}px`;
+            } else {
+                // Set position for individual words
+                element.style.left = `${currentLeft}px`;
+                element.style.top = `${initialTop}px`;
+                element.style.transform = `rotate(0deg)`;
+            }
 
             currentLeft += element.clientWidth + proximity;
         }
@@ -146,3 +163,4 @@ function getRandomElement(array) {
 }
 
 document.getElementById("soupEmoji").addEventListener("click", generateRandomSentence);
+
